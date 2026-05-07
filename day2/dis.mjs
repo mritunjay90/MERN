@@ -4,6 +4,7 @@
 // console.log(c);
 
 //object destructuring
+// in object order does not matter
 
 let {name, weight, ismarried} = {name: "mrs", weight: 50, isMarried: false};
 console.log(name);

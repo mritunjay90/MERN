@@ -1,0 +1,17 @@
+[
+  {
+    "key": "cmd+shift+space",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+cmd+space",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorTextFocus && !editorReadonly"
+  }
+]
