@@ -1,0 +1,15 @@
+let info=["mrs","shah",7,false];
+console.log(info[0]);
+console.log(info[1]);
+console.log(info[2]);
+console.log(info[3]);
+info[1]="john";
+console.log(info[1]);
+info.push("new info");
+console.log(info);
+info.unshift("first info");
+console.log(info);
+info.shift();
+console.log(info);
+info.pop();
+console.log(info);
