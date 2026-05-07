@@ -3,3 +3,4 @@ let info=(name, surname,ward)=>{
 };
 info("mrs","shah",7);
 info()
+
