@@ -30,3 +30,19 @@ if (process.argv.includes('--help')) {
   console.log("  --help      Show this help message");
   process.exit(0);
 }
+// more features can be added here in the future, such as support for more complex expressions, history of calculations, etc.
+if (process.argv.includes('--history')) {
+  console.log("History feature is not implemented yet.");
+  process.exit(0);
+}   
+let history = [];
+rl.question("Enter expression: ", (input) => {
+  try {
+    const result = eval(input);
+    console.log("Result:", result);
+    history.push({ expression: input, result });
+  } catch (err) {
+    console.log("Invalid expression");
+  }
+  rl.close();
+});
