@@ -11,6 +11,12 @@ rl.question("Enter first number: ", (num1) => {
       num1 = Number(num1);
       num2 = Number(num2);
 
+      if (isNaN(num1) || isNaN(num2)) {
+        console.log("Error: Please enter valid numbers");
+        rl.close();
+        return;
+      }
+
       let result;
 
       switch (operator) {
@@ -24,10 +30,14 @@ rl.question("Enter first number: ", (num1) => {
           result = num1 * num2;
           break;
         case "/":
-          result = num1 / num2;
+          if (num2 === 0) {
+            result = "Error: Cannot divide by zero";
+          } else {
+            result = num1 / num2;
+          }
           break;
         default:
-          result = "Invalid operator";
+          result = "Error: Invalid operator";
       }
 
       console.log("Result:", result);
