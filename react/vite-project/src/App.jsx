@@ -1,5 +1,7 @@
 import React from 'react'
-
+import Address from './Address'
+import Mother from './Mother'
+import Info from './Info'
 const App = () => {
   let name= "mrs"
   let surname= "shah"
@@ -46,6 +48,9 @@ const App = () => {
         </div>
       })
     }
+    <Address country="Nepal" city="Kathmandu" province="Bagmati"></Address>
+    <Info name="Mr" surname="Shah" ward={4} ></Info>
+    <Mother works ="housewife" age={30} ></Mother>
   </div>)
 };
 export default App;

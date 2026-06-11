@@ -2,3 +2,7 @@
 2) we can store and return tag.
 3) Function can return only one tag.
 4) Use {} inside tag to perform js operation (+,-,...... variables calls, )
+
+Basic HTML
+5) Component
+6) 
