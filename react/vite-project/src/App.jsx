@@ -45,12 +45,16 @@ const App = () => {
           <p>user name is {item.name}</p>
           <p>user email is {item.email}</p>
           <img src={item.image} width="100" height="100"/>
+          
         </div>
       })
     }
     <Address country="Nepal" city="Kathmandu" province="Bagmati"></Address>
     <Info name="Mr" surname="Shah" ward={4} ></Info>
     <Mother works ="housewife" age={30} ></Mother>
+    <p className="success">this is success</p>
+          <p className="error">this is error</p>
+          <p className="warning">this is warning</p>
   </div>)
 };
 export default App;
