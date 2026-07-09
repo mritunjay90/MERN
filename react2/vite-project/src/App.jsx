@@ -1,13 +1,13 @@
 import React from 'react'
+import './App.css'
 import Navbar from './Component/Navbar'
 import CosmosRoute from './Component/CosmosRoute'
 
 const App = () => {
   return (
-    <div>
+    <div className="app-shell">
       <Navbar />
-      <main style={{padding: '1rem'}}>
-      
+      <main>
         <CosmosRoute />
       </main>
     </div>
@@ -15,8 +15,3 @@ const App = () => {
 }
 
 export default App
-
-
-/*
-product create product user creste user school create school  
-*/

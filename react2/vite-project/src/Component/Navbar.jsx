@@ -1,11 +1,43 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import './Navbar.css'
 
 const Navbar = () => {
   const [open, setOpen] = useState(false)
+  const navRef = useRef(null)
 
   const close = () => setOpen(false)
+  const toggleMenu = () => setOpen((prev) => !prev)
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        close()
+      }
+    }
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        close()
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('keydown', handleEscape)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [open])
 
   return (
     <header className="nav-header">
@@ -15,14 +47,16 @@ const Navbar = () => {
         <button
           className={`nav-toggle ${open ? 'open' : ''}`}
           aria-label="Toggle navigation"
-          onClick={() => setOpen((s) => !s)}
+          aria-expanded={open}
+          aria-controls="site-nav"
+          onClick={toggleMenu}
         >
           <span className="bar" />
           <span className="bar" />
           <span className="bar" />
         </button>
 
-        <nav className={`nav ${open ? 'open' : ''}`}>
+        <nav ref={navRef} id="site-nav" className={`nav ${open ? 'open' : ''}`} aria-label="Primary navigation">
           <NavLink to="/user" className="nav-link" onClick={close}>
             User
           </NavLink>
@@ -43,6 +77,8 @@ const Navbar = () => {
           </NavLink>
         </nav>
       </div>
+
+      <div className={`mobile-overlay ${open ? 'show' : ''}`} onClick={close} />
     </header>
   )
 }
