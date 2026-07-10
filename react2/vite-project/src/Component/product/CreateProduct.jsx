@@ -1,6 +1,7 @@
 import React from 'react'
 import useState from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 const CreateProduct = () => {
   let [name, setName] = React.useState("")
   let [price, setPrice] = React.useState("")
@@ -21,10 +22,16 @@ const CreateProduct = () => {
             url: "http://localhost:7000/product",
             method: "POST",
             data: data
-          })
+          });
+          toast.success("Product created successfully")
           console.log(result)
+          setName("")
+          setPrice("")
+          setQuantity("")
+          setDescription("")
         } catch (error) {
-          console.log(error)
+          toast.error(error.response.data.message)
+          console.log(error.response)
         }
     };
 
@@ -43,6 +50,7 @@ const CreateProduct = () => {
           <div>
             <label htmlFor="price">Price:</label>
             <input id="price" 
+            type="number"
             value={price}
             onChange={(e)=>{
               setPrice(e.target.value)

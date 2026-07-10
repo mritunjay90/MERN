@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { toast } from 'react-toastify'
+import axios from 'axios'
 
 const CreateUser = () => {
   const [name, setName] = useState("")
@@ -7,7 +9,7 @@ const CreateUser = () => {
   const [password, setPassword] = useState("")
   const [phone, setPhone] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault()
     const data = {
       name: name,
@@ -17,6 +19,23 @@ const CreateUser = () => {
       phone: phone,
     }
     console.log(data)
+    try {
+      let result = await axios({
+        url: "http://localhost:7000/user",
+        method: "POST",
+        data: data
+      });
+      toast.success("User created successfully")
+      console.log(result)
+      setName("")
+      setAddress("")
+      setEmail("")
+      setPassword("")
+      setPhone("")
+    } catch (error) {
+      toast.error(error.response.data.message)
+      console.log(error.response)
+    }
   }
 
   return (
@@ -30,6 +49,7 @@ const CreateUser = () => {
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              
             />
           </div>
           <div>
